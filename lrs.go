@@ -25,11 +25,11 @@ func (lrs *limitedReadSeeker) Seek(offset int64, whence int) (ret int64, err err
 	var curr int64
 	curr, err = s.Seek(0, 1)
 	if err != nil {
-		log.Panic(err)
+		return
 	}
 	ret, err = s.Seek(offset, whence)
 	if err != nil {
-		log.Panic(err)
+		return
 	}
 	lrs.LimitedReader.N += curr - ret
 	if offset == 0 && whence == 1 {

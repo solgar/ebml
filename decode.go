@@ -105,7 +105,7 @@ func (e *Element) Next() (*Element, error) {
 	}
 	off, err := e.Seek(0, 1)
 	if err != nil {
-		log.Panic(err)
+		return nil, err
 	}
 	id, err, _ := readVint(e)
 	if err != nil {
